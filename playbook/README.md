@@ -2,7 +2,7 @@
 
 Для запуска нужно:
 
-1. Заполнить переменные в vault-файле secrets.yaml
+1. Заполнить переменные в vault-файле secrets.yaml *(пароль от имеющегося - 1111)*
 ```
 cloudru_password: <пароль пользователя cloudru>
 ssh_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCfrfE0OluoNHb5dOpV4RpWmVXvMBWc17kaM7DDjCm>
