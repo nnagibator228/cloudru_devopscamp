@@ -1,0 +1,36 @@
+---
+- name: Configure hosts
+  hosts: main
+  become: true
+
+  vars_files:
+    - secrets.yaml
+
+  tasks:
+    - name: Create new user
+      user:
+        name: cloudru
+        password: "{{ cloudru_password }}"
+        update_password: always
+        createhome: yes
+
+    - name: Allow SSH access with key
+      authorized_key:
+        user: cloudru
+        state: present
+        key: "{{ ssh_key }}"
+        exclusive: yes
+
+    - name: Restrict root login via SSH
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: '^PermitRootLogin'
+        line: 'PermitRootLogin no'
+        state: present
+      notify: restart ssh
+
+  handlers:
+    - name: restart ssh
+      service:
+        name: ssh
+        state: restarted

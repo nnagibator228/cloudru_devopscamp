@@ -18,6 +18,8 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCfrfE0OluoNHb5dOpV4RpWmVXvMBWc17kaM7DDjCm7
 ```
 Полученный плейбук и команду для его запуска положить в папку /playbook
 
+> [ВЫПОЛНЕНО]
+
 ## 2. Web приложение на Python
 ### Приложение
 Требуется написать простое веб-приложение на Python, которое слушает входящие соединения на порту 8000 и предоставляет HTTP API, в котором реализовано 3 метода:
@@ -44,3 +46,5 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCfrfE0OluoNHb5dOpV4RpWmVXvMBWc17kaM7DDjCm7
 - значение, подставляемое в переменную AUTHOR
 
 Полученный чарт положить в папку /helm
+
+> [ВЫПОЛНЕНО]

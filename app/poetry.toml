@@ -1,0 +1,13 @@
+[build-system]
+requires = ["poetry>=1.1.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "fastapi-app"
+version = "0.1.0"
+description = "A FastAPI application"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.70.0"
+uvicorn = "^0.15.0"

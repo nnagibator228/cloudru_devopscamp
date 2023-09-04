@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "mychart.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ include "mychart.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "mychart.name" . }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ .Values.image.name }}
+          ports:
+            - containerPort: 8000
+          env:
+            - name: UUID
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: AUTHOR
+              value: {{ .Values.author }}
+          readinessProbe:
+            httpGet:
+              path: /hostname
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /hostname
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+
